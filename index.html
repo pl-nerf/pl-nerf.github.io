@@ -68,6 +68,9 @@
         }
     </script>
 	
+    <!--ADDED FOR JUXTAPOSE JS-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
 </head>
 
 <body>
@@ -130,8 +133,7 @@
                 <div class="col-md-8 col-md-offset-2 text-center">
                     <ul class="nav nav-pills nav-justified">
                         <li>
-<!--                            <a href="2022_BakedSDF.pdf">-->
-							<a href="https://pl-nerf.github.io" target="_blank">
+							<a href="https://arxiv.org/abs/2310.20685" target="_blank">
                             <image src="img/plnerf_paper_image.png" height="120px"></image>
                                 <h4><strong>Paper</strong></h4>
                             </a>
@@ -250,36 +252,84 @@
 		<div class="row comp-margin">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    NeRF Results
+                    NeRF Results 
                 </h3>
-<!--                 <div class="b-dics" style="width: 100%">
-                    <img src="img/gardenvase_mesh_ours.jpg" alt="Vanilla NeRF (Constant)" />
-                    <img src="img/gardenvase_rendering.jpg" alt="PL-NeRF (Linear)" />
-                </div> -->
-                Coming Soon.
-            </div>
-<!-- 		<br>		
-		<div class="row comp-margin">
-            <div class="col-md-8 col-md-offset-2">
+                <p> <br />We highlight the comparative advantage of <b>PL-NeRF (linear)</b> over <b>NeRF (constant)</b> through a zoomed-in render of the side of a microphone.
+                    In the constant model, conflicts in ray supervision between perpendicular and grazing angle rays result in <b>fuzzier surfaces</b> . 
+                    PL-NeRF alleviates this issue and yields a <b>finer texturing</b> of the microphone exterior.
+                </p>
                 <div class="b-dics" style="width: 100%">
-                    <img src="img/mesh.014.jpg" alt="Mesh" />
-                    <img src="img/final.014.jpg" alt="Rendering" />
+                    <img src="img/nerf/const_mic.jpeg" alt="Vanilla NeRF (Constant)" />
+                    <img src="img/nerf/lin_mic.jpeg" alt="PL-NeRF (Linear)" />
                 </div>
+                <p><br> We also show qualitative video results from Blender scenes, which illustrate the improvements of the linear model over the constant model at various rendered camera views.</p>
+                <div class="b-dics" style="width: 100%" class="img-responsive center-block">
+                    <img src="img/gifs/chair_constant_multidist_slow (1).gif" alt="Vanilla NeRF (Constant)" />
+                    <img src="img/gifs/chair_linear_multidist_slow (1).gif" alt="PL-NeRF (Linear)" />
+                </div>
+                <p><br><b>Chair: </b>When the camera is positioned close to the chair, the slider shows sharper texturing on the chair patterns for the linear model than the constant model.</p>
+                <div class="b-dics" style="width: 100%" class="img-responsive center-block">
+                    <img src="img/gifs/mic_constant_hemis_slow (1).gif" alt="Vanilla NeRF (Constant)" />
+                    <img src="img/gifs/mic_linear_hemis_slow (1).gif" alt="PL-NeRF (Linear)" />
+                </div>
+                <p><br /><b>Microphone: </b>At a bird's eye view, the linear model captures the internal structure of the microphone, which is lost in constant volume rendering.</p>
             </div>
-        </div> -->
-
         </div>
 
         <div class="row comp-margin">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    MipNeRF Results
+                    Multidistance Results
                 </h3>
-<!--                 <div class="b-dics" style="width: 100%">
-                    <img src="img/gardenvase_mesh_ours.jpg" alt="MipNeRF (Constant)" />
-                    <img src="img/gardenvase_rendering.jpg" alt="PL-MipNeRF (Linear)" />
-                </div> -->
-                Coming Soon.
+                <p><br> We further consider the challenging setting of training with cameras at <b>different distances</b> to the object. 
+                    This results in <b>different sets of ray samples</b> which may cause conflicts, leading to quadrature instability in the constant model.
+                    The linear model is <b>more stable and accurate</b> on these <b>multidistance</b> views: at all distances, the rendered outputs for PL-NeRF have sharper texture than NeRF.
+                    Furthermore, in NeRF the level of noise (gold specs) and blurriness vary at different camera distances, whereas our PL-NeRF renders <b>crisper and more consistent</b> outputs over all distances.
+                </p>
+                <p>
+                    <br />
+                    <b>1x Camera-to-Scene Distance:</b>
+                    <br />
+                </p>
+                <div class="b-dics" style="width: 100%">
+                    <img src="img/multidist/const_1x.jpeg" alt="Vanilla NeRF (Constant)" />
+                    <img src="img/multidist/lin_1x.jpeg" alt="PL-NeRF (Linear)" />
+                </div>
+                <p>
+                    <br />
+                    <b>0.5x Camera-to-Scene Distance:</b>
+                    <br />
+                </p>
+                <div class="b-dics" style="width: 100%">
+                    <img src="img/multidist/const_0.5x.jpeg" alt="Vanilla NeRF (Constant)" />
+                    <img src="img/multidist/lin_0.5x.jpeg" alt="PL-NeRF (Linear)" />
+                </div>
+                <p>
+                    <br />
+                    <b>0.25x Camera-to-Scene Distance:</b>
+                    <br />
+                </p>
+                <div class="b-dics" style="width: 100%">
+                    <img src="img/multidist/const_0.25x.jpeg" alt="Vanilla NeRF (Constant)" />
+                    <img src="img/multidist/lin_0.25x.jpeg" alt="PL-NeRF (Linear)" />
+                </div>
+                <br>
+            </div>
+        </div>
+
+        <div class="row comp-margin">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Mip-NeRF Results
+                </h3>
+                <p>We also integrate our piecewise linear opacity formulation into <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a> to formulate <b>PL-MipNeRF</b>. 
+                    Qualitatively, we see that under difficult scenarios such as when ray conflicts arise in the fine texture details of the Chair and in the presence of grazing angle views in the Mic, our PL-MipNeRF shows significant improvement over the baseline. 
+                    This shows that our approach can be used as a <b>drop-in replacement</b> to existing <b>NeRF variants</b>.
+                <br>
+            </p>
+                <img src="img/mipnerf/mipnerf_chair.jpeg" style="width: 100%">
+                <img src="img/mipnerf/mipnerf_mic.jpeg" style="width: 100%">
+                <br>
             </div>
         </div>
         
@@ -288,11 +338,36 @@
                 <h3>
                     Geometric Extraction
                 </h3>
-<!--                 <div class="b-dics" style="width: 100%">
-                    <img src="img/gardenvase_mesh_ours.jpg" alt="Constant" />
-                    <img src="img/gardenvase_rendering.jpg" alt="Linear" />
-                </div> -->
-                Coming Soon.
+                <p>
+                    PL-NeRF improves <b>neural-based geometric reconstruction</b>. 
+                    We can extract the geometry of a scene from the <b>learned density field</b> in the trained models of PL-NeRF and Vanilla NeRF.
+                    Below we show qualitative improvements in the reconstruction from the piecewise linear model, compared to the original piecewise constant formulation. 
+                </p>
+                <p>
+                    <b>Microphone: </b>PL-NeRF is able to recover the majority of structure inside the Mic, which is lost in the constant model.
+                    <br />
+                </p>
+                <div class="b-dics" style="width: 100%">
+                    <img src="img/geometry/const_scope.jpeg" alt="Constant" />
+                    <img src="img/geometry/lin_scope.jpeg" alt="Linear" />
+                </div>
+                <p> <br>
+                    <b>Lego: </b>The holes on the body and wheels of the Lego scene become visually clearer with PL-NeRF.
+                    <br />
+                </p>
+                <div class="b-dics" style="width: 100%">
+                    <img src="img/geometry/const_lego.jpeg" alt="Constant" />
+                    <img src="img/geometry/lin_lego.jpeg" alt="Linear" />
+                </div>
+                <p> <br>
+                    <b>Drums: </b>The interior of a hollow drum is reconstructed to be fully hollow with PL-NeRF, but only partially hollow with NeRF.
+                    Although the ground truth geometry is opaque at the drum surface, PL-NeRF visually matches the transparent drum better than NeRF.
+                    <br />
+                </p>
+                <div class="b-dics" style="width: 100%">
+                    <img src="img/geometry/const_drums.jpeg" alt="Constant" />
+                    <img src="img/geometry/lin_drums.jpeg" alt="Linear" />
+                </div>
             </div>
         </div>
         
