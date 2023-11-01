@@ -292,8 +292,8 @@
                     <br />
                 </p>
                 <div class="b-dics" style="width: 100%">
-                    <img src="img/multidist/const_1x.jpeg" alt="Vanilla NeRF (Constant)" />
-                    <img src="img/multidist/lin_1x.jpeg" alt="PL-NeRF (Linear)" />
+                    <img src="img/multidist_new/const_1x.jpeg" alt="Vanilla NeRF (Constant)" />
+                    <img src="img/multidist_new/lin_1x.jpeg" alt="PL-NeRF (Linear)" />
                 </div>
                 <p>
                     <br />
@@ -301,8 +301,8 @@
                     <br />
                 </p>
                 <div class="b-dics" style="width: 100%">
-                    <img src="img/multidist/const_0.5x.jpeg" alt="Vanilla NeRF (Constant)" />
-                    <img src="img/multidist/lin_0.5x.jpeg" alt="PL-NeRF (Linear)" />
+                    <img src="img/multidist_new/const_0.5x.jpeg" alt="Vanilla NeRF (Constant)" />
+                    <img src="img/multidist_new/lin_0.5x.jpeg" alt="PL-NeRF (Linear)" />
                 </div>
                 <p>
                     <br />
@@ -310,8 +310,8 @@
                     <br />
                 </p>
                 <div class="b-dics" style="width: 100%">
-                    <img src="img/multidist/const_0.25x.jpeg" alt="Vanilla NeRF (Constant)" />
-                    <img src="img/multidist/lin_0.25x.jpeg" alt="PL-NeRF (Linear)" />
+                    <img src="img/multidist_new/const_0.25x.jpeg" alt="Vanilla NeRF (Constant)" />
+                    <img src="img/multidist_new/lin_0.25x.jpeg" alt="PL-NeRF (Linear)" />
                 </div>
                 <br>
             </div>
@@ -356,18 +356,22 @@
                     <br />
                 </p>
                 <div class="b-dics" style="width: 100%">
-                    <img src="img/geometry/const_lego.jpeg" alt="Constant" />
-                    <img src="img/geometry/lin_lego.jpeg" alt="Linear" />
+                    <img src="img/geometry_lego/const_lego.jpeg" alt="Constant" />
+                    <img src="img/geometry_lego/lin_lego.jpeg" alt="Linear" />
                 </div>
                 <p> <br>
-                    <b>Drums: </b>The interior of a hollow drum is reconstructed to be fully hollow with PL-NeRF, but only partially hollow with NeRF.
-                    Although the ground truth geometry is opaque at the drum surface, PL-NeRF visually matches the transparent drum better than NeRF.
-                    <br />
+                    <b>Drums: </b>The interior of a hollow drum is reconstructed as fully hollow in PL-NeRF, but only partially hollow in NeRF.
                 </p>
                 <div class="b-dics" style="width: 100%">
                     <img src="img/geometry/const_drums.jpeg" alt="Constant" />
                     <img src="img/geometry/lin_drums.jpeg" alt="Linear" />
                 </div>
+                <p> <br>
+                    Even if the ground truth mesh is solid at the drum surface, PL-NeRF visually matches the image of the transparent drum (i.e. the only
+                    signal used in supervised learning) better than NeRF, as shown below.
+                    <br />
+                </p>
+                <img src="img/geometry/drum_img.jpeg" style="width:85%;" class="img-responsive center-block" alt="GT" />
             </div>
         </div>
         
