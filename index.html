@@ -254,9 +254,9 @@
                 <h3>
                     NeRF Results 
                 </h3>
-                <p> <br />We highlight the comparative advantage of <b>PL-NeRF (linear)</b> over <b>NeRF (constant)</b> through a zoomed-in render of the side of a microphone.
+                <p> <br />We highlight the comparative advantage of <b>PL-NeRF (linear)</b> over <b>Vanilla NeRF (constant)</b> through a zoomed-in render of the side of a microphone.
                     In the constant model, conflicts in ray supervision between perpendicular and grazing angle rays result in <b>fuzzier surfaces</b> . 
-                    PL-NeRF alleviates this issue and yields a <b>finer texturing</b> of the microphone exterior.
+                    PL-NeRF alleviates this issue and yields a crisper textures on the microphone.
                 </p>
                 <div class="b-dics" style="width: 100%">
                     <img src="img/nerf/const_mic.jpeg" alt="Vanilla NeRF (Constant)" />
@@ -282,9 +282,9 @@
                     Multidistance Results
                 </h3>
                 <p><br> We further consider the challenging setting of training with cameras at <b>different distances</b> to the object. 
-                    This results in <b>different sets of ray samples</b> which may cause conflicts, leading to quadrature instability in the constant model.
-                    The linear model is <b>more stable and accurate</b> on these <b>multidistance</b> views: at all distances, the rendered outputs for PL-NeRF have sharper texture than NeRF.
-                    Furthermore, in NeRF the level of noise (gold specs) and blurriness vary at different camera distances, whereas our PL-NeRF renders <b>crisper and more consistent</b> outputs over all distances.
+                    This results in <b>different sets of ray samples</b> leading to quadrature instability in the constant model.
+                    PL-NeRF results in better renderings on <b>multi-distance</b> views: at all distances, the rendered outputs for PL-NeRF have sharper texture than Vanilla NeRF.
+                    Furthermore, in Vanilla NeRF the level of noise (gold specs) and blurriness vary at different camera distances, whereas our PL-NeRF renders <b>crisper and more consistent</b> outputs over all distances.
                 </p>
                 <p>
                     <br />
@@ -322,8 +322,8 @@
                 <h3>
                     Mip-NeRF Results
                 </h3>
-                <p>We also integrate our piecewise linear opacity formulation into <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a> to formulate <b>PL-MipNeRF</b>. 
-                    Qualitatively, we see that under difficult scenarios such as when ray conflicts arise in the fine texture details of the Chair and in the presence of grazing angle views in the Mic, our PL-MipNeRF shows significant improvement over the baseline. 
+                <p>We also integrate our piecewise linear opacity formulation into <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>, which we call <b>PL-MipNeRF</b>. 
+                    We see that under difficult scenarios such as when ray conflicts arise in the fine texture details of the Chair and in the presence of grazing angle views in the Mic, our PL-MipNeRF shows significant improvement over the baseline. 
                     This shows that our approach can be used as a <b>drop-in replacement</b> to existing <b>NeRF variants</b>.
                 <br>
             </p>
@@ -339,12 +339,12 @@
                     Geometric Extraction
                 </h3>
                 <p>
-                    PL-NeRF improves <b>neural-based geometric reconstruction</b>. 
-                    We can extract the geometry of a scene from the <b>learned density field</b> in the trained models of PL-NeRF and Vanilla NeRF.
+                    PL-NeRF also improves <b>geometric reconstruction</b> on coordinate-based networks. 
+                    We can extract the geometry of a scene from the learned density field in the trained models of PL-NeRF and Vanilla NeRF.
                     Below we show qualitative improvements in the reconstruction from the piecewise linear model, compared to the original piecewise constant formulation. 
                 </p>
                 <p>
-                    <b>Microphone: </b>PL-NeRF is able to recover the majority of structure inside the Mic, which is lost in the constant model.
+                    <b>Microphone: </b>PL-NeRF is able to better recover the structure inside the Mic, which is lost in the constant model.
                     <br />
                 </p>
                 <div class="b-dics" style="width: 100%">
@@ -352,7 +352,7 @@
                     <img src="img/geometry/lin_scope.jpeg" alt="Linear" />
                 </div>
                 <p> <br>
-                    <b>Lego: </b>The holes on the body and wheels of the Lego scene become visually clearer with PL-NeRF.
+                    <b>Lego: </b>The holes on the body and wheels of the Lego scene become visually clearer in PL-NeRF.
                     <br />
                 </p>
                 <div class="b-dics" style="width: 100%">
@@ -360,7 +360,7 @@
                     <img src="img/geometry_lego/lin_lego.jpeg" alt="Linear" />
                 </div>
                 <p> <br>
-                    <b>Drums: </b>The interior of a hollow drum is reconstructed as fully hollow in PL-NeRF, but only partially hollow in NeRF.
+                    <b>Drums: </b>Interestingly, the interior of a hollow drum is reconstructed as hollow in PL-NeRF.
                 </p>
                 <div class="b-dics" style="width: 100%">
                     <img src="img/geometry/const_drums.jpeg" alt="Constant" />
